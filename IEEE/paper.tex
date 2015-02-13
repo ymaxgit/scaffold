@@ -1,0 +1,86 @@
+\documentclass[letterpaper,twocolumn,10pt]{article}
+
+\usepackage{usesnix}
+
+\usepackage{amsmath}                        % extended math env
+\usepackage{amssymb}                        % more math symbols
+\usepackage[small,bf]{caption}              % bold figure titles + small font
+\usepackage[usenames,dvipsnames]{color}     % color access
+\usepackage[T1]{fontenc}                    % use 8-bit T1 font encoding
+% \usepackage{fullpage}                     % 1" uniform margins
+\usepackage[pdfborder={0 0 0}]{hyperref}    % generate pdf links for references
+\usepackage[utf8]{inputenc}                 % support UTF8 input
+\usepackage{listings}                       % code listings
+\usepackage{mathptmx}                       % times roman font + math
+\usepackage{tikz}                           % tikz graphics
+
+% nicer bib formatting
+\usepackage[square,comma,numbers,sort&compress]{natbib}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstloadlanguages{C}
+\lstset{%
+  basicstyle=\small\ttfamily,
+  basewidth={0.49em,0.45em},
+  commentstyle=\color{mygreen},
+  keywordstyle=\color{blue},
+  language=C,
+  emph={uint},
+  emphstyle=\color{blue},
+  numbers=none,
+  numbersep=5pt,
+  numberstyle=\tiny\color{mygray},
+  stringstyle=\color{mymauve}
+}
+
+% customize gap after floats... (0.7cm default)
+\setlength{\textfloatsep}{0.40cm}
+
+% customize header spacing
+% \usepackage[compact,nonindentfirst]{titlesec}
+% \titlespacing{\section}{0pt}{2ex}{0.5ex}
+% \titlespacing{\subsection}{0pt}{1.25ex}{0.5ex}
+% \titlespacing{\subsubsection}{0pt}{0.5ex}{0.0ex}
+
+\frenchspacing
+
+\begin{document}
+
+%do not want date printed
+\date{}
+
+\title{\Large \textbf{An Awesome Paper}}
+
+\author{\
+{\rm David Terei}\\
+Stanford University
+}
+
+\maketitle
+
+\input{0-abstract}
+\input{1-intro}
+\input{2-background}
+\input{3-cases}
+\input{4-eval}
+\input{5-discussion}
+\input{6-related}
+\input{7-conclusion}
+
+\section*{Acknowledgments}
+
+We thank God, David Bowie and the Children.
+
+{%
+  \frenchspacing
+  % \footnotesize
+  \bibliographystyle{abbrvnat}
+  % \bibliographystyle{acm}
+  \bibliography{paper}
+}
+
+\end{document}
+
