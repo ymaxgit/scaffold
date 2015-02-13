@@ -1,0 +1,108 @@
+\documentclass{sigplanconf}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{balance}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage[ansinew]{inputenc}
+\usepackage{listings}
+\usepackage{mathptmx}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{xspace}
+\usepackage{threeparttable}
+
+\renewcommand{\ttdefault}{cmtt}
+
+\lstloadlanguages{Haskell}
+\lstnewenvironment{code}
+    {\lstset{}%
+      \csname lst@SetFirstLabel\endcsname}
+    {\csname lst@SaveFirstLabel\endcsname}
+    \lstset{
+      basicstyle=\small\ttfamily,
+      escapeinside={/+}{+/},
+      flexiblecolumns=false,
+      basewidth={0.49em,0.45em},
+      literate={+}{{$+$}}1 {/}{{$/$}}1 {*}{{$*$}}1
+               {=}{{$=$}}2 {/=}{{$\neg$}}1
+               {>}{{$>$}}1 {<}{{$<$}}1 {\\}{{$\lambda$}}1
+               {++}{{$+\!\!\!+$}}1 % {::}{{$:\!\!:$}}1
+               {\\\\}{{\char`\\\char`\\}}1
+               {->}{{$\rightarrow$}}2 {>=}{{$\geq$}}2 {<-}{{$\leftarrow$}}2
+               {<=}{{$\leq$}}2 {=>}{{$\Rightarrow$}}2
+%               {\ .\ }{{$\circ$}}2 {(.)}{{($\circ$)}}2
+               {<<}{{$\ll$}}2 {>>}{{$\gg$}}2 {>>=}{{$>\!\!>\!\!=$}}2
+               {|}{{$\mid$}}1
+               {undefined}{{$\bot$}}1
+%               {not\ }{{$\neg$}}1
+               {`elem`}{{$\in$}}1
+               {forall}{{$\forall$}}1
+               {./\\.}{{$\land$}}1
+               {.\\/.}{{$\lor$}}1
+               {.U.}{{$\cup$}}1
+    }
+
+
+\newcommand{\hs}{\lstinline[backgroundcolor=\color{white},breakatwhitespace=true]}
+\newcommand{\hssp}{\lstinline[backgroundcolor=\color{white},breakatwhitespace=true,breaklines=true]}
+
+%% To write in Haskell code
+%%% \begin{code}
+%%%  ....
+%%% \end{code}
+%%%
+%%% To write Haskell code inlined \hs!here the code! or \hssp!here the code!. \hssp breaks a line if needed.
+
+\newcommand{\Red}[1]{{\color{red} #1}}
+\newcommand{\ToDo}[1]{{\color{blue} ToDo: #1}}
+\newcommand{\nb}[1]{$\lhd$ \Red{#1} $\rhd$}
+
+\begin{document}
+
+\conferenceinfo{} {}
+\CopyrightYear{}
+\copyrightdata{}
+
+\title{Title}
+\authorinfo{}
+           {}
+           {}
+\date{}
+
+\maketitle
+
+\input{abstract}
+
+% mandatory
+\category{}{}{}
+
+% optional
+\terms
+Term1, Term2, Term3
+
+% mandatory
+\keywords
+Type safety, Security, Haskell
+
+\input{intro}
+\input{background}
+\input{design}
+\input{implementation}
+\input{uses}
+\input{eval}
+\input{discussion}
+\input{limitations}
+\input{related}
+\input{conclusions}
+
+\section*{Acknowledgments}
+We thank God, America, and flags.
+
+\bibliographystyle{abbrvnat}
+\bibliography{paper}
+
+\end{document}
+
