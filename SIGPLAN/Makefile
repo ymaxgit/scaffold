@@ -21,4 +21,5 @@ view:
 
 .PHONY: check
 check:
-	./lint.sh
+	@./lint.sh
+
