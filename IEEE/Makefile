@@ -19,3 +19,7 @@ clean:
 view:
 	$(open) out/paper.pdf
 
+.PHONY: check
+check:
+	./lint.sh
+
