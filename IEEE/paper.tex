@@ -4,6 +4,7 @@
 
 \usepackage{amsmath}                        % extended math env
 \usepackage{amssymb}                        % more math symbols
+% \usepackage{balance}                      % balance coloumns on final page
 \usepackage[small,bf]{caption}              % bold figure titles + small font
 \usepackage[usenames,dvipsnames]{color}     % color access
 \usepackage[T1]{fontenc}                    % use 8-bit T1 font encoding
@@ -13,6 +14,7 @@
 \usepackage{listings}                       % code listings
 \usepackage{mathptmx}                       % times roman font + math
 \usepackage{tikz}                           % tikz graphics
+\usepackage{xspace}                         % adds cmd for proper spacing
 
 % nicer bib formatting
 \usepackage[square,comma,numbers,sort&compress]{natbib}
@@ -35,6 +37,11 @@
   numberstyle=\tiny\color{mygray},
   stringstyle=\color{mymauve}
 }
+
+% Todo commands
+\newcommand{\Red}[1]{{\color{red} #1}}
+\newcommand{\ToDo}[1]{{\color{blue} ToDo: #1}}
+\newcommand{\nb}[1]{$\lhd$ \Red{#1} $\rhd$}
 
 % customize gap after floats... (0.7cm default)
 \setlength{\textfloatsep}{0.40cm}
@@ -78,7 +85,6 @@ We thank God, David Bowie and the Children.
   \frenchspacing
   % \footnotesize
   \bibliographystyle{abbrvnat}
-  % \bibliographystyle{acm}
   \bibliography{paper}
 }
 

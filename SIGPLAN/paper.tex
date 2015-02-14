@@ -1,21 +1,22 @@
 \documentclass{sigplanconf}
 
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{balance}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage[ansinew]{inputenc}
-\usepackage{listings}
-\usepackage{mathptmx}
-\usepackage{url}
-\usepackage{wrapfig}
-\usepackage{xspace}
-\usepackage{threeparttable}
+\usepackage{amsmath}                        % extended math env
+\usepackage{amssymb}                        % more math symbols
+\usepackage[small,bf]{caption}              % bold figure titles + small font
+\usepackage[usenames,dvipsnames]{color}     % color access
+\usepackage[T1]{fontenc}                    % use 8-bit T1 font encoding
+% \usepackage{fullpage}                     % 1" uniform margins
+\usepackage[pdfborder={0 0 0}]{hyperref}    % generate pdf links for references
+\usepackage[utf8]{inputenc}                 % support UTF8 input
+\usepackage{listings}                       % code listings
+\usepackage{mathptmx}                       % times roman font + math
+\usepackage{tikz}                           % tikz graphics
+\usepackage{xspace}                         % adds cmd for proper spacing
 
-\renewcommand{\ttdefault}{cmtt}
+% nicer bib formatting
+\usepackage[square,comma,numbers,sort&compress]{natbib}
 
+% Haskell listings
 \lstloadlanguages{Haskell}
 \lstnewenvironment{code}
     {\lstset{}%
@@ -29,22 +30,19 @@
       literate={+}{{$+$}}1 {/}{{$/$}}1 {*}{{$*$}}1
                {=}{{$=$}}2 {/=}{{$\neg$}}1
                {>}{{$>$}}1 {<}{{$<$}}1 {\\}{{$\lambda$}}1
-               {++}{{$+\!\!\!+$}}1 % {::}{{$:\!\!:$}}1
+               {++}{{$+\!\!\!+$}}1
                {\\\\}{{\char`\\\char`\\}}1
                {->}{{$\rightarrow$}}2 {>=}{{$\geq$}}2 {<-}{{$\leftarrow$}}2
                {<=}{{$\leq$}}2 {=>}{{$\Rightarrow$}}2
-%               {\ .\ }{{$\circ$}}2 {(.)}{{($\circ$)}}2
                {<<}{{$\ll$}}2 {>>}{{$\gg$}}2 {>>=}{{$>\!\!>\!\!=$}}2
                {|}{{$\mid$}}1
                {undefined}{{$\bot$}}1
-%               {not\ }{{$\neg$}}1
                {`elem`}{{$\in$}}1
                {forall}{{$\forall$}}1
                {./\\.}{{$\land$}}1
                {.\\/.}{{$\lor$}}1
                {.U.}{{$\cup$}}1
     }
-
 
 \newcommand{\hs}{\lstinline[backgroundcolor=\color{white},breakatwhitespace=true]}
 \newcommand{\hssp}{\lstinline[backgroundcolor=\color{white},breakatwhitespace=true,breaklines=true]}
@@ -56,9 +54,21 @@
 %%%
 %%% To write Haskell code inlined \hs!here the code! or \hssp!here the code!. \hssp breaks a line if needed.
 
+% Todo commands
 \newcommand{\Red}[1]{{\color{red} #1}}
 \newcommand{\ToDo}[1]{{\color{blue} ToDo: #1}}
 \newcommand{\nb}[1]{$\lhd$ \Red{#1} $\rhd$}
+
+% customize gap after floats... (0.7cm default)
+\setlength{\textfloatsep}{0.40cm}
+
+% customize header spacing
+% \usepackage[compact,nonindentfirst]{titlesec}
+% \titlespacing{\section}{0pt}{2ex}{0.5ex}
+% \titlespacing{\subsection}{0pt}{1.25ex}{0.5ex}
+% \titlespacing{\subsubsection}{0pt}{0.5ex}{0.0ex}
+
+\frenchspacing
 
 \begin{document}
 
@@ -74,7 +84,7 @@
 
 \maketitle
 
-\input{abstract}
+\input{0-abstract}
 
 % mandatory
 \category{}{}{}
@@ -87,22 +97,26 @@ Term1, Term2, Term3
 \keywords
 Type safety, Security, Haskell
 
-\input{intro}
-\input{background}
-\input{design}
-\input{implementation}
-\input{uses}
-\input{eval}
-\input{discussion}
-\input{limitations}
-\input{related}
-\input{conclusions}
+\input{1-intro}
+\input{2-background}
+\input{3-design}
+\input{4-implementation}
+\input{5-uses}
+\input{6-eval}
+\input{7-discussion}
+\input{8-limitations}
+\input{9-related}
+\input{A-conclusions}
 
 \section*{Acknowledgments}
 We thank God, America, and flags.
 
-\bibliographystyle{abbrvnat}
-\bibliography{paper}
+{%
+  \frenchspacing
+  % \footnotesize
+  \bibliographystyle{abbrvnat}
+  \bibliography{paper}
+}
 
 \end{document}
 

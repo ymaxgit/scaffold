@@ -1,34 +1,21 @@
-RUBBER=rubber -Wrefs -Wmisc
+os := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
+ifeq ($(os),Darwin)
+	open = open
+else
+	open = xdg-open
+endif
 
-pdf: paper.pdf
-.PHONY: pdf
+.PHONY: all
+all: paper.pdf
 
-paper.pdf: paper.tex
-	$(RUBBER) --pdf paper.tex
-.PHONY: paper.pdf
+%.pdf:
+	latexmk -output-directory=out -pdf $*.tex
 
-clean:
-	$(RUBBER) --pdf --clean paper.tex
-	$(RUBBER) --ps --clean paper.tex
 .PHONY: clean
+clean:
+	rm -rf out
 
-ps: paper.ps
-.PHONY: ps
+.PHONY: view
+view:
+	$(open) out/paper.pdf
 
-# for submission
-submission: paper.ps
-	mv paper.ps haskel01-terei.ps
-	mv paper.pdf haskel01-terei.pdf
-.PHONY: submission
-
-paper.ps:
-	$(RUBBER) --ps paper.tex
-.PHONY: paper.ps
-
-# rubber doesn't work on OSX for me, so raw commands...
-raw:
-	pdflatex paper
-	bibtex paper
-	pdflatex paper
-	pdflatex paper
-.PHONE: raw
