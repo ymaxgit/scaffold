@@ -1,0 +1,32 @@
+% Page -- 8.5" x 11"
+% Text -- 6.5" x 9"
+% Gutter -- 0.25"
+\setlength{\textheight}{9.0in}
+\setlength{\textwidth}{6.50in}
+\setlength{\columnsep}{0.25in}
+
+\setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in}
+\setlength{\headsep}{0.0in}
+
+% Page numbers desired for submission, but not camera ready
+% \pagestyle{empty}
+
+% Space title page down further
+\def\@maketitle{\newpage
+ \vbox to 2.5in{
+ \vspace*{\fill}
+ \vskip 2em
+ \begin{center}%
+  {\Large\bf \@title \par}%
+  \vskip 0.375in minus 0.300in
+  {\large\it
+   \lineskip .5em
+   \begin{tabular}[t]{c}\@author
+   \end{tabular}\par}%
+ \end{center}%
+ \par
+ \vspace*{\fill}
+ }
+}
+
