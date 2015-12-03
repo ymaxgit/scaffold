@@ -2,70 +2,178 @@
 
 \usepackage{paper}
 
+% Packages
 \usepackage{amsmath}                        % extended math env
 \usepackage{amssymb}                        % more math symbols
 % \usepackage{balance}                      % balance coloumns on final page
-\usepackage[small,bf]{caption}              % bold figure titles + small font
+\usepackage{booktabs}                       % nicer tables + hline thickness
 \usepackage[usenames,dvipsnames]{color}     % color access
+\usepackage{datetime}                       % date formatting enhancements
+\usepackage{enumitem}                       % customize / extend latex lists
 \usepackage[T1]{fontenc}                    % use 8-bit T1 font encoding
+\usepackage{footnote}                       % fix footnotes in tables
 % \usepackage{fullpage}                     % 1" uniform margins
+\usepackage{graphicx}                       % modern latex graphics support
 \usepackage[pdfborder={0 0 0}]{hyperref}    % generate pdf links for references
 \usepackage[utf8]{inputenc}                 % support UTF8 input
+\usepackage{lastpage}                       % allows us to refer to last page
 \usepackage{listings}                       % code listings
-\usepackage{mathptmx}                       % times roman font + math
+\usepackage{microtype}                      % enhanced typography
+\usepackage{newtxtext}                      % times roman font
+\usepackage{newtxmath}                      % times roman math font
+\usepackage{tabu}                           % flexible tabular environment
 \usepackage{tikz}                           % tikz graphics
-\usepackage{xspace}                         % adds cmd for proper spacing
+\usepackage{url}                            % nicer URL formatting
+\usepackage{xifthen}                        % help with optional args
+\usepackage{xspace}                         % auto-space mgmt for commands
 
 % nicer bib formatting
 \usepackage[square,comma,numbers,sort&compress]{natbib}
 
+
+% PDF hyperlink configuration
+\hypersetup{%
+  colorlinks,
+  linkcolor={red!50!black},
+  citecolor={blue!50!black},
+  urlcolor={blue!80!black}
+}
+
+% Code formatting
 \definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mygray}{rgb}{0.7,0.7,0.7}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
 \lstloadlanguages{C}
 \lstset{%
-  basicstyle=\small\ttfamily,
-  basewidth={0.49em,0.45em},
+  basicstyle=\footnotesize\ttfamily,
+  basewidth={0.5em,0.45em},
   commentstyle=\color{mygreen},
-  keywordstyle=\color{blue},
+  keywordstyle=\bf,
   language=C,
   emph={uint},
   emphstyle=\color{blue},
-  numbers=none,
-  numbersep=5pt,
-  numberstyle=\tiny\color{mygray},
-  stringstyle=\color{mymauve}
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\footnotesize\color{mygray},
+  stringstyle=\color{mymauve},
+  xleftmargin=2.1em
 }
+
+\lstdefinelanguage{algo}{%
+  morekeywords={, procedure, input, output, begin, end, if, else, while, for,
+                foreach, in, and, or, return,},
+  literate={+}{{$+$}}1
+           {-}{{$-$}}1
+           {/}{{$/$}}1
+           {*}{{$*$}}1
+           {==}{{$=$}}2
+           {!=}{{$\neg$}}1
+           {>}{{$>$}}1
+           {<}{{$<$}}1
+           {>=}{{$\geq$}}2
+           {<=}{{$\leq$}}2
+           {->}{{$\to$}}2
+           {<-}{{$\gets$}}2
+           {//}{{//}}2
+}
+
+\lstdefinelanguage{r}{%
+  morekeywords={function, return},
+  literate={+}{{$+$}}1
+           {-}{{$-$}}1
+           {/}{{$/$}}1
+           {*}{{$*$}}1
+           {==}{{$=$}}2
+           {!=}{{$\neg$}}1
+           {>}{{$>$}}1
+           {<}{{$<$}}1
+           {>=}{{$\geq$}}2
+           {<=}{{$\leq$}}2
+           {->}{{$\to$}}2
+           {<-}{{$\gets$}}2
+           {//}{{//}}2
+}
+
+% Haskell listings
+%% To write in Haskell code
+%%% \begin{code}
+%%%  ....
+%%% \end{code}
+%%%
+%%% To write Haskell code inlined \hs!here the code! or \hssp!here the code!. \hssp breaks a line if needed.
+\lstloadlanguages{Haskell}
+\lstnewenvironment{code}
+    {\lstset{}%
+      \csname lst@SetFirstLabel\endcsname}
+    {\csname lst@SaveFirstLabel\endcsname}
+    \lstset{
+      basicstyle=\small\ttfamily,
+      escapeinside={/+}{+/},
+      flexiblecolumns=false,
+      basewidth={0.49em,0.45em},
+      literate={+}{{$+$}}1 {/}{{$/$}}1 {*}{{$*$}}1
+               {=}{{$=$}}2 {/=}{{$\neg$}}1
+               {>}{{$>$}}1 {<}{{$<$}}1 {\\}{{$\lambda$}}1
+               {++}{{$+\!\!\!+$}}1
+               {\\\\}{{\char`\\\char`\\}}1
+               {->}{{$\rightarrow$}}2 {>=}{{$\geq$}}2 {<-}{{$\leftarrow$}}2
+               {<=}{{$\leq$}}2 {=>}{{$\Rightarrow$}}2
+               {<<}{{$\ll$}}2 {>>}{{$\gg$}}2 {>>=}{{$>\!\!>\!\!=$}}2
+               {|}{{$\mid$}}1
+               {undefined}{{$\bot$}}1
+               {`elem`}{{$\in$}}1
+               {forall}{{$\forall$}}1
+               {./\\.}{{$\land$}}1
+               {.\\/.}{{$\lor$}}1
+               {.U.}{{$\cup$}}1
+    }
+\newcommand{\hs}{\lstinline[backgroundcolor=\color{white},breakatwhitespace=true]}
+\newcommand{\hssp}{\lstinline[backgroundcolor=\color{white},breakatwhitespace=true,breaklines=true]}
+
+% Customize gap after floats... (0.7cm default)
+\setlength{\textfloatsep}{0.40cm}
+
+% It's just nicer! Double-space was for the days of shitty typography.
+\frenchspacing
 
 % Todo commands
 \newcommand{\Red}[1]{{\color{red} #1}}
 \newcommand{\ToDo}[1]{{\color{blue} ToDo: #1}}
 \newcommand{\nb}[1]{$\lhd$ \Red{#1} $\rhd$}
 
-% customize gap after floats... (0.7cm default)
-\setlength{\textfloatsep}{0.40cm}
+% small text with argument (how we had been using \small)
+\newcommand{\smalltext}[1]{{\small #1}}
 
-% customize header spacing
-% \usepackage[compact,nonindentfirst]{titlesec}
-% \titlespacing{\section}{0pt}{2ex}{0.5ex}
-% \titlespacing{\subsection}{0pt}{1.25ex}{0.5ex}
-% \titlespacing{\subsubsection}{0pt}{0.5ex}{0.0ex}
-
-\frenchspacing
-
-\begin{document}
-
-%do not want date printed
-\date{}
-
-\title{\Large \textbf{An Awesome Paper}}
-
-\author{\
-{\rm David Terei}\\
-Stanford University
+% Figure placeholder
+\newcommand{\figureplaceholder}[1]{%
+  \ifthenelse{\isempty{#1}{}}{%
+    \begin{tikzpicture}
+      \draw [blue] (0,0) rectangle (6,4) node[midway] {Figure Placeholder};
+    \end{tikzpicture}
+  }{%
+    \begin{tikzpicture}
+      \draw [blue] (0,0) rectangle (6,4) node[midway] {#1};
+    \end{tikzpicture}
+  }
 }
 
+% Conference setup
+% TODO: Insert here.
+
+% No date in title area.
+\date{}
+
+% Authors -- double blind
+\author{\
+{\rm Paper \textbf{\#1}}\\
+\pageref{LastPage} pages
+}
+
+% Document
+\begin{document}
+
+\title{\Large \textbf{An Awesome Paper}}
 \maketitle
 
 \input{0-abstract}
@@ -83,10 +191,8 @@ We thank God, David Bowie and the Children.
 
 {%
   \frenchspacing
-  % \footnotesize
   \bibliographystyle{abbrvnat}
   \bibliography{paper}
 }
 
 \end{document}
-
