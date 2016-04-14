@@ -59,16 +59,26 @@ $GREPI "minimised" *.tex
 $GREPI "[^\\{=]centre" *.tex
 
 # common mistakes
+$GREPI "canot" *.tex # cannot
 $GREPI "incluiding" *.tex # including
 $GREPI "infered" *.tex # inferred
 $GREPI "funciton" *.tex # function
 $GREPI "seperation" *.tex # separation
 $GREPI "seperate" *.tex # separate
-$GREP  "internet" *.tex # Internet
 $GREP  "[^/:{-]memcached\b" *.tex # Memcached
 $GREPI "[^{-]memcache\b" *.tex # Memcached
+
+# Hyphens
 $GREPI "run-time[s]\b" *.tex # runtime[s]
 $GREPI "ad-hoc" *.tex # ad hoc -- no hyphen in latin
+$GREPI "pre-emption" *.tex # preemption
+$GREPI "non-determinism" *.tex # nondeterminism
+$GREPI "tail latency" *.tex # tail-latency
+$GREPI "tail latencies" *.tex # tail-latencies
+$GREPI "server side" *.tex # server-side
+
+# Capitalize
+$GREP  "internet" *.tex # Internet
 
 
 ###########################################################
@@ -93,11 +103,6 @@ echo "=> Grammar"
 $GREPI "build of" *.tex # build on
 $GREPI "builds of" *.tex # builds on
 $GREPI "later case" *.tex # latter case
-$GREPI "server side" *.tex # server-side
-$GREPI "pre-emption" *.tex # preemption
-$GREPI "non-determinism" *.tex # nondeterminism
-$GREPI "tail latency" *.tex # tail-latency
-$GREPI "tail latencies" *.tex # tail-latencies
 
 
 ###########################################################
@@ -123,8 +128,8 @@ echo "=> Informal"
 
 $GREPI "can not" *.tex # cannot, although both are correct
 $GREPI "couldn't" *.tex # could not
-#$GREP "you" *.tex
-#$GREP "your" *.tex
+$GREPI "you\b" *.tex
+$GREPI "your\b" *.tex
 $GREPI "let's" *.tex
 $GREPI "don't" *.tex
 $GREPI "won't" *.tex
