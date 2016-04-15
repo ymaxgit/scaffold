@@ -67,8 +67,9 @@ $GREPI "seperation" *.tex # separation
 $GREPI "seperate" *.tex # separate
 $GREP  "[^/:{-]memcached\b" *.tex # Memcached
 $GREPI "[^{-]memcache\b" *.tex # Memcached
+$GREPI "targetted" *.tex # targeted
 
-# Hyphens
+# Compound words (hyphen, space, none)
 $GREPI "run-time[s]\b" *.tex # runtime[s]
 $GREPI "ad-hoc" *.tex # ad hoc -- no hyphen in latin
 $GREPI "pre-emption" *.tex # preemption
@@ -76,6 +77,8 @@ $GREPI "non-determinism" *.tex # nondeterminism
 $GREPI "tail latency" *.tex # tail-latency
 $GREPI "tail latencies" *.tex # tail-latencies
 $GREPI "server side" *.tex # server-side
+$GREPI "tool chain" *.tex # toolchain
+$GREPI "tool-chain" *.tex # toolchain
 
 # Capitalize
 $GREP  "internet" *.tex # Internet
