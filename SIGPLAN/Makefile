@@ -1,11 +1,6 @@
 PAPER=paper
 
-os := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
-ifeq ($(os),Darwin)
-	open = open
-else
-	open = xdg-open
-endif
+open := $(shell sh -c '[ `uname` = Darwin ] && echo open || echo xdg-open')
 
 .PHONY: FORCE
 cqp.pdf: FORCE
